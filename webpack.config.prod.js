@@ -33,8 +33,8 @@ module.exports = {
   entry: './src/index.js',
 
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'server.min.js'
+    filename: 'server.js',
+    path: path.resolve(__dirname, 'build')
   },
 
   module: {
