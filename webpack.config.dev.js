@@ -3,11 +3,6 @@ const webpack = require('webpack')
 const fs = require('fs')
 
 const plugins = [
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  }),
   new webpack.NamedModulesPlugin(),
   new webpack.NoEmitOnErrorsPlugin()
 ]
@@ -22,6 +17,10 @@ const nodeModules = fs.readdirSync('node_modules').filter(function (x) {
 
 module.exports = {
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
 
   entry: './src/index.js',
 
