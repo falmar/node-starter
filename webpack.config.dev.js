@@ -1,43 +1,41 @@
 const path = require('path')
-const webpack = require('webpack')
-const fs = require('fs')
+const nodeExternals = require('webpack-node-externals')
 
-const plugins = [
-  new webpack.NamedModulesPlugin(),
-  new webpack.NoEmitOnErrorsPlugin()
-]
-
-const nodeModules = fs.readdirSync('node_modules').filter(function (x) {
-  return ['.bin'].indexOf(x) === -1
-}).reduce(function (acc, curr) {
-  acc[curr] = 'commonjs ' + curr
-
-  return acc
-}, {})
+const plugins = []
 
 module.exports = {
+  mode: 'development',
   target: 'node',
+
   node: {
     __dirname: false,
     __filename: false
   },
 
-  entry: './src/index.js',
+  entry: {
+    bundle: './src/index.js'
+  },
 
   output: {
-    filename: 'server.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'server.js'
+  },
+
+  externals: [nodeExternals()],
+
+  plugins: plugins,
+
+  resolve: {
+    alias: {}
   },
 
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
       }
     ]
-  },
-  plugins: plugins,
-  externals: nodeModules
+  }
 }
