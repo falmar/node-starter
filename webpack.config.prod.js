@@ -1,6 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const plugins = [
@@ -9,8 +9,12 @@ const plugins = [
 
 const optimization = {
   minimizer: [
-    new UglifyJsPlugin({
-      sourceMap: true
+    new TerserPlugin({
+      sourceMap: true,
+      parallel: true,
+      terserOptions: {
+        ecma: 6
+      }
     })
   ],
   splitChunks: {
