@@ -10,9 +10,9 @@ const plugins = [
 const optimization = {
   minimizer: [
     new TerserPlugin({
-      sourceMap: true,
       parallel: true,
       terserOptions: {
+        sourceMap: true,
         ecma: 6
       }
     })
