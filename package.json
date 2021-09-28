@@ -6,30 +6,30 @@
   "scripts": {
     "build": "standard ./src/**/*.js && webpack --config webpack.config.prod.js",
     "watch": "webpack --watch --config webpack.config.dev.js",
-    "start": "nodemon --watch dist dist/server.js",
+    "start": "nodemon --watch dist dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Lavieri",
   "license": "MIT",
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "@babel/eslint-parser"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "nodemon": "^2.0.6",
-    "standard": "^15",
-    "terser-webpack-plugin": "^5.0.3",
-    "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0",
-    "webpack-node-externals": "^2.5.2"
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "nodemon": "^2.0.13",
+    "standard": "^16.0.3",
+    "terser-webpack-plugin": "^5.2.4",
+    "webpack": "^5.54.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5"
+    "@babel/runtime": "^7.15.4"
   }
 }
